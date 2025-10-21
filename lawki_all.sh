@@ -5,7 +5,7 @@ for filename in ./inputs/*; do
         echo "about to render LAWKI $(basename "$filename" .txt)"
         if [ ! -f "./outputs/$(basename "$filename" .txt)/lawki.mp4" ]; then
         echo "no mp4"
-        python lawki.py "$(basename "$filename" .txt)"
+        python src/lawki.py "$(basename "$filename" .txt)"
         fi
     fi
 done

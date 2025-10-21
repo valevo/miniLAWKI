@@ -39,8 +39,8 @@ class MetaRW:
 
 
 class RW:
-    abs_min = 4
-    abs_max = 9
+    abs_min = 3
+    abs_max = 8
     
     @staticmethod
     def load_data(directory, is_2D):
@@ -92,7 +92,7 @@ class RW:
 
         
 class Line2D(RW):    
-    def __init__(self, n_neighbours=40, hist_len=5, restart_percentage=0.3,
+    def __init__(self, n_neighbours=40, hist_len=5, restart_percentage=0.1,
                  directory="./", space=None, meta=None):
         super().__init__(is_2D=True, directory=directory, space=space, meta=meta)
 
@@ -242,8 +242,10 @@ class NeighbourRW(RW):
             self.sampling_pool = set(range(self.n)) - set(self.sampled[-100:])
 
         cur_row = self.meta.iloc[self.cur]
-        
-        return self.cur, cur_row, self.sample_duration(cur_row)    
+
+        sampled_duration = self.sample_duration(cur_row)
+        print(f"{sampled_duration=}")
+        return self.cur, cur_row, sampled_duration
 
         
         

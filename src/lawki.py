@@ -75,6 +75,7 @@ if __name__ == "__main__":
     for _ in range(15):
         try:
             i, cur_row, (start, duration) = rw.step(0)
+            print(f"{duration=}")
             steps.append([cur_row.name, start, duration])
         except ValueError:
             print("DONE!")
